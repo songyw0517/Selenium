@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS Traveltest;
+CREATE TABLE Traveltest(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    address VARCHAR(255)
+);
+
+
