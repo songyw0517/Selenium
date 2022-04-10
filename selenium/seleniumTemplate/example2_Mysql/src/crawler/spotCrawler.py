@@ -23,12 +23,14 @@ class spotCrawler(seleniumDriver):
         with open(self.BASE_DIR+"/../refData/ref.txt", encoding='UTF-8') as f:
             travelList = f.readlines()
             self.travelList = list(map(lambda x:x.rstrip('\n'), travelList))
+            
     def test(self):
         for name in self.travelList:
             print(name)
     def getSpotData(self, url):
         pass
-
+    
+    
 
 if __name__ == '__main__':
     spot = spotCrawler()
