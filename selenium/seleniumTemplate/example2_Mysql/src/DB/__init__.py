@@ -21,6 +21,8 @@ class Mysql:
     def getCursor(self):
         return self.__cursor
 
+    def getDB(self):
+        return self.__db
     @property
     def schema(self) -> dict:
         """Get default document format"""

@@ -69,7 +69,7 @@ class spotCrawler(seleniumDriver):
         spotData.append(
             {
                 'category':'spotData',
-                'itmes':self.getSpotData('https://map.kakao.com/')
+                'items':self.getSpotData('https://map.kakao.com/')
             }
         )
         print(spotData)
