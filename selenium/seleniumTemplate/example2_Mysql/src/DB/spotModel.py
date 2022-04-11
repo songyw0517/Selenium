@@ -1,4 +1,3 @@
-from pydoc import describe
 import pymysql
 import os
 import json
