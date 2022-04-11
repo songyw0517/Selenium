@@ -22,8 +22,8 @@ class spotDB(Mysql):
                         self.getCursor().execute(query)
                 except Exception as msg:
                     print("Command skipped: ", msg)
-
-    def upsert_model(self, doucment:dict):
+    def upsert_model_from_json(self, do)
+    def upsert_model(self, document:dict):
         pass
 
 if __name__ == '__main__':

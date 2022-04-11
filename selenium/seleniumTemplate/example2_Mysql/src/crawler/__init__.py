@@ -22,8 +22,9 @@ class seleniumDriver:
     def getDriver(self):
         return self.driver
     
-    def closeDriver(self):
-        self.driver.close()
+    def __del__(self):
+        if "driver" in self.__dict__:
+            self.driver.close()
 
     def setWaitTime(self, waitTime):
         self.waitTime = waitTime
