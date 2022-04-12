@@ -23,14 +23,4 @@ class Mysql:
 
     def getDB(self):
         return self.__db
-    @property
-    def schema(self) -> dict:
-        """Get default document format"""
-        return{
-            'created_at': datetime.now(),
-            'updated_at': datetime.now(),
-            '__version__': self.VERSION,
-        }
     
-    def schemize(self, document: dict) -> dict:
-        return {**self.schema, **document}

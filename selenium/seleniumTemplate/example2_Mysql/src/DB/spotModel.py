@@ -24,13 +24,13 @@ class spotDB(Mysql):
                     if query.strip() != '':
                         self.getCursor().execute(query)
                 except Exception as msg:
-                    print("Command skipped: ", msg)
+                    print("Query Except : ", msg)
 
     def insert_model(self, document:dict):
         '''
         DB 설계 미스로 인한 임시 구현, id 중복처리 불가
         '''
-        table = "traveltest" # DTO.__module__로 대체 가능
+        table = "traveltest" # DTO.__name__로 대체 가능
         column = ', '.join(map(str, document.keys()))
         values = '\"'+'\", \"'.join(map(str, document.values()))+'\"'
         query = "INSERT INTO {} ({}) VALUES({})".format(table, column, values)
