@@ -1,9 +1,11 @@
 import pymysql
 from datetime import datetime
+import os
 class Mysql:
     VERSION = 1
 
     def __init__(self):
+        self.BASE_DIR = os.path.abspath(os.path.dirname(__file__))
         self.__user = 'test'
         self.__host = 'localhost'
         self.__password = 'test'
@@ -18,19 +20,23 @@ class Mysql:
                                     database=self.__database,
                                     charset=self.__charset)
         self.__cursor = self.__db.cursor()
+
     def getCursor(self):
         return self.__cursor
 
     def getDB(self):
         return self.__db
-    @property
-    def schema(self) -> dict:
-        """Get default document format"""
-        return{
-            'created_at': datetime.now(),
-            'updated_at': datetime.now(),
-            '__version__': self.VERSION,
-        }
-    
-    def schemize(self, document: dict) -> dict:
-        return {**self.schema, **document}
+
+    #############################
+    # path에 있는 sql 파일 실행 #
+    #############################
+    def exeSqlFile(self, path:str):
+        with open(self.BASE_DIR+path, 'r', encoding='UTF-8-sig') as f:
+            # 쿼리문 나누기 및 반복
+            for query in f.read().split(';'):
+                try:
+                    if query.strip() != '':
+                        self.getCursor().execute(query)
+                except Exception as msg:
+                    print("Query Except : ", msg)
+
